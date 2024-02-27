@@ -57,7 +57,7 @@ model IncomeStatement {
   end_date     DateTime
   created_at   DateTime?  @default(now()) @db.Timestamp(6)
   updated_at   DateTime?  @default(now()) @db.Timestamp(6)
-  currency     String?    @db.VarChar(255)
+  currency_code     String?    @db.VarChar(255)
   net_income   Float?
   net_sales    Float?
   net_profit   Float?
@@ -71,7 +71,7 @@ model BalanceSheet {
   end_date          DateTime
   created_at        DateTime?  @default(now()) @db.Timestamp(6)
   updated_at        DateTime?  @default(now()) @db.Timestamp(6)
-  currency          String?    @db.VarChar(255)
+  currency_code          String?    @db.VarChar(255)
   total_assets      Float?
   total_liabilities Float?
   total_equity      Float?

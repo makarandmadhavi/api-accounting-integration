@@ -49,16 +49,16 @@ export default async function BalanceTable({
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.currency_code}
+                    {statement.currency_code || 'USD'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.total_assets}
+                    {statement.total_assets || '0'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.total_liabilities}
+                    {statement.total_liabilities || '0'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.total_equity}
+                    {statement.total_equity || '0'}
                   </td>
                 </tr>
               ))}

@@ -176,21 +176,21 @@ export async function fetchIncomeStatements() {
                     const {
                         start_date,
                         end_date,
-                        currency,
+                        currency_code: currency_code,
                         net_income,
                         net_sales,
                         net_profit,
                     } = statement;
 
-                    const parsedNetIncome = net_income ? parseFloat(net_income) : null;
-                    const parsedNetSales = net_sales ? parseFloat(net_sales) : null;
-                    const parsedNetProfit = net_profit ? parseFloat(net_profit) : null;
+                    const parsedNetIncome = net_income ? parseFloat(net_income) : 0;
+                    const parsedNetSales = net_sales ? parseFloat(net_sales) : 0;
+                    const parsedNetProfit = net_profit ? parseFloat(net_profit) : 0;
 
                     await prisma.IncomeStatement.create({
                         data: {
                             start_date,
                             end_date,
-                            currency,
+                            currency_code: currency_code,
                             net_income: parsedNetIncome,
                             net_sales: parsedNetSales,
                             net_profit: parsedNetProfit,
@@ -258,7 +258,7 @@ export async function fetchBalanceSheets() {
                 for (const sheet of balance_sheets) {
                     console.log("Creating balance sheet");
                     const {
-                        currency,
+                        currency_code: currency_code,
                         total_assets,
                         total_liabilities,
                         total_equity,
@@ -274,7 +274,7 @@ export async function fetchBalanceSheets() {
                         data: {
                             start_date,
                             end_date,
-                            currency,
+                            currency_code: currency_code,
                             total_assets: parsedTotalAssets,
                             total_liabilities: parsedTotalLiabilities,
                             total_equity: parsedTotalEquity,

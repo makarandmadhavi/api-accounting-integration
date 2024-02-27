@@ -48,16 +48,16 @@ export default async function IncomeTable({
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.currency_code}
+                    {statement.currency_code || 'USD'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.net_income}
+                    {statement.net_income? statement.net_income: '0'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.net_sales}
+                    {statement.net_sales? statement.net_sales: '0'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.net_profit}
+                    {statement.net_profit? statement.net_profit: '0'}
                   </td>
                 </tr>
               ))}
