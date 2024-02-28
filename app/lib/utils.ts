@@ -67,3 +67,14 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export const getCurrentDateISO = function(): string {
+  const currentDate = new Date();
+  return currentDate.toISOString();
+};
+
+export const getDateThreeYearsAgoISO = function(): string {
+  const currentDate = new Date();
+  const threeYearsAgo = new Date(currentDate.getFullYear() - 3, currentDate.getMonth(), currentDate.getDate());
+  return threeYearsAgo.toISOString();
+};

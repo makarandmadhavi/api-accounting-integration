@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { fetchBalanceSheets, getBalanceSheetsFromRutter } from '@/app/lib/rutterBackend';
 import BalanceTable from '@/app/ui/invoices/balancetable';
+import { AggregateBalanceCard } from '@/app/ui/cards';
 
 export const metadata: Metadata = {
   title: 'Balance Sheets',
@@ -31,6 +32,13 @@ export default async function Page({
       <div className="flex w-full items-center justify-between">
         <h1 className={`${lusitana.className} text-2xl`}>Balance Sheets</h1>
       </div>
+      <p className='text-center'>Monthly Averages</p>
+      <div className="mt-5 gap-6 flex w-full justify-center">
+        
+        {statements && <AggregateBalanceCard balance_sheets={statements} />}
+      </div>
+      <br></br>
+      <p className='text-center'>Actuals</p>
       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
         <BalanceTable query={query} currentPage={currentPage} statements={statements} />
       </Suspense>

@@ -10,8 +10,10 @@ import {
     User,
     Revenue,
     Connection,
+    IncomeStatement,
+    BalanceSheet,
 } from './definitions';
-import { formatCurrency } from './utils';
+import { formatCurrency, getCurrentDateISO, getDateThreeYearsAgoISO } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import axios from 'axios';
 import { revalidatePath } from 'next/cache';
@@ -137,7 +139,9 @@ export async function getIncomeStatementsFromRutter() {
             `https://${ENV_URL}/versioned/accounting/income_statements`,
             {
                 headers: {
-                    "x-rutter-version": '2023-03-14'
+                    "x-rutter-version": '2023-03-14',
+                    "start_date": getCurrentDateISO(),
+                    "end_date": getDateThreeYearsAgoISO(),
                 },
                 params: {
                     access_token: access_token,
@@ -149,7 +153,7 @@ export async function getIncomeStatementsFromRutter() {
             }
         );
         const { income_statements } = response.data;
-        return income_statements;
+        return income_statements as IncomeStatement[];
     } catch (e) {
         console.error(e);
         return null;
@@ -162,7 +166,7 @@ export async function fetchIncomeStatements() {
     if(!connection) return null;
     const { access_token } = connection;
     try {
-        const statements = await prisma.IncomeStatement.findMany({
+        const statements: IncomeStatement[] = await prisma.IncomeStatement.findMany({
             where: {
                 access_token: access_token,
             },
@@ -180,11 +184,17 @@ export async function fetchIncomeStatements() {
                         net_income,
                         net_sales,
                         net_profit,
+                        total_income,
+                        total_expenses,
+                        total_cost_of_sales
                     } = statement;
 
                     const parsedNetIncome = net_income ? parseFloat(net_income) : 0;
                     const parsedNetSales = net_sales ? parseFloat(net_sales) : 0;
                     const parsedNetProfit = net_profit ? parseFloat(net_profit) : 0;
+                    const parsedTotalIncome = total_income ? parseFloat(total_income) : 0;
+                    const parsedTotalExpenses = total_expenses ? parseFloat(total_expenses) : 0;
+                    const parsedTotalCostOfSales = total_cost_of_sales ? parseFloat(total_cost_of_sales) : 0;
 
                     await prisma.IncomeStatement.create({
                         data: {
@@ -194,6 +204,9 @@ export async function fetchIncomeStatements() {
                             net_income: parsedNetIncome,
                             net_sales: parsedNetSales,
                             net_profit: parsedNetProfit,
+                            total_income: parsedTotalIncome,
+                            total_expenses: parsedTotalExpenses,
+                            total_cost_of_sales: parsedTotalCostOfSales,
                             access_token,
                         },
                     });
@@ -202,7 +215,7 @@ export async function fetchIncomeStatements() {
             }
         } else {
             console.log("Income statements already exist");
-            return statements;
+            return statements as IncomeStatement[];
         }
     } catch (e) {
         console.error(e);
@@ -221,7 +234,9 @@ export async function getBalanceSheetsFromRutter() {
             `https://${ENV_URL}/versioned/accounting/balance_sheets`,
             {
                 headers: {
-                    "x-rutter-version": '2023-03-14'
+                    "x-rutter-version": '2023-03-14',
+                    "start_date": getCurrentDateISO(),
+                    "end_date": getDateThreeYearsAgoISO(),
                 },
                 params: {
                     access_token: access_token,
@@ -233,7 +248,7 @@ export async function getBalanceSheetsFromRutter() {
             }
         );
         const { balance_sheets } = response.data;
-        return balance_sheets;
+        return balance_sheets as BalanceSheet[];
     } catch (e) {
         console.error(e);
         return null;

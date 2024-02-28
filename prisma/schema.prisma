@@ -61,6 +61,9 @@ model IncomeStatement {
   net_income   Float?
   net_sales    Float?
   net_profit   Float?
+  total_income Float?
+  total_expenses Float?
+  total_cost_of_sales Float?
   connection   connection @relation(fields: [access_token], references: [access_token])
 }
 

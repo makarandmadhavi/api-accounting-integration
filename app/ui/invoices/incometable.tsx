@@ -34,6 +34,16 @@ export default async function IncomeTable({
                 <th scope="col" className="px-3 py-5 font-medium">
                   Net Profit
                 </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Income
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Expenses
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Cost Of Sales
+                </th>
+
               </tr>
             </thead>
             <tbody className="bg-white">
@@ -51,13 +61,22 @@ export default async function IncomeTable({
                     {statement.currency_code || 'USD'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.net_income? statement.net_income: '0'}
+                    {statement.net_income ? statement.net_income : '0'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.net_sales? statement.net_sales: '0'}
+                    {statement.net_sales ? statement.net_sales : '0'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {statement.net_profit? statement.net_profit: '0'}
+                    {statement.net_profit ? statement.net_profit : '0'}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {statement.net_income ? statement.total_income : '0'}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {statement.net_sales ? statement.total_expenses : '0'}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {statement.net_profit ? statement.total_cost_of_sales : '0'}
                   </td>
                 </tr>
               ))}

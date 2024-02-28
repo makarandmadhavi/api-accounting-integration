@@ -97,3 +97,26 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export type IncomeStatement = {
+  id: string;
+  start_date: string;
+  end_date: string;
+  currency_code: string;
+  net_income: string;
+  net_sales: string;
+  net_profit: string;
+  total_income: string;
+  total_expenses: string;
+  total_cost_of_sales: string;
+};
+
+export type BalanceSheet = {
+  id: string;
+  start_date: string;
+  end_date: string;
+  currency_code: string;
+  total_assets: string;
+  total_liabilities: string;
+  total_equity: string;
+};

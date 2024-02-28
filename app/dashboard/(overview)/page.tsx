@@ -1,4 +1,4 @@
-import CardWrapper from '@/app/ui/dashboard/cards';
+import { CardWrapper } from '@/app/ui/cards';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchSessionUser } from '@/app/lib/data';
 import { Suspense } from 'react';
