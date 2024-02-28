@@ -140,11 +140,11 @@ export async function getIncomeStatementsFromRutter() {
             {
                 headers: {
                     "x-rutter-version": '2023-03-14',
-                    "start_date": getCurrentDateISO(),
-                    "end_date": getDateThreeYearsAgoISO(),
                 },
                 params: {
                     access_token: access_token,
+                    "start_date": getDateThreeYearsAgoISO(),
+                    "end_date": getCurrentDateISO(),
                 },
                 auth: {
                     username: CLIENT_ID,
@@ -235,11 +235,11 @@ export async function getBalanceSheetsFromRutter() {
             {
                 headers: {
                     "x-rutter-version": '2023-03-14',
-                    "start_date": getCurrentDateISO(),
-                    "end_date": getDateThreeYearsAgoISO(),
                 },
                 params: {
                     access_token: access_token,
+                    "start_date": getDateThreeYearsAgoISO(),
+                    "end_date": getCurrentDateISO(),
                 },
                 auth: {
                     username: CLIENT_ID,
