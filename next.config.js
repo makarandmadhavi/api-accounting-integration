@@ -4,6 +4,7 @@ const nextConfig = {
     experimental: {
         serverActions: {
           allowedOrigins: ['https://api-integration.makarandmadhavi.me'],
+          allowedForwardedHosts: ['api-integration.makarandmadhavi.me'],
         },
     },
 };
