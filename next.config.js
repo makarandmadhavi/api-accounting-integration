@@ -3,8 +3,8 @@ const nextConfig = {
     output: "standalone",
     experimental: {
         serverActions: {
-          allowedOrigins: ['https://api-integration.makarandmadhavi.me'],
-          allowedForwardedHosts: ['api-integration.makarandmadhavi.me'],
+          allowedOrigins: ['api-integration.makarandmadhavi.me', `localhost:${process.env.PORT || 3000}`],
+          allowedForwardedHosts: ['api-integration.makarandmadhavi.me', `localhost:${process.env.PORT || 3000}`],
         },
     },
 };
