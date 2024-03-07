@@ -5,8 +5,9 @@ This repository contains a Next.js application integrated with a PostgreSQL data
 ## Live Demo
 
 [https://api-integration.makarandmadhavi.me/](https://api-integration.makarandmadhavi.me/)
-username: accountingtest@test.com
-password: 123456
+
+- username: `accountingtest@test.com`
+- password: `123456`
 
 ## Installation
 
