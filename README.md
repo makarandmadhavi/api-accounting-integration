@@ -1,4 +1,4 @@
-# Next.js App with PostgreSQL Database and Rutter API Integration
+# Next.js App with PostgreSQL Database and API Integration
 
 This repository contains a Next.js application integrated with a PostgreSQL database. A Learning project that modifies [Next.js App Router Course - Starter](https://nextjs.org/learn).
 
