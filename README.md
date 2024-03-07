@@ -2,6 +2,12 @@
 
 This repository contains a Next.js application integrated with a PostgreSQL database and Rutter API. Follow the instructions below to set up the environment, configure the required variables, set up the database with Prisma, and run/build the application for development and production.
 
+## Live Demo
+
+[https://api-integration.makarandmadhavi.me/](https://api-integration.makarandmadhavi.me/)
+username: accountingtest@test.com
+password: 123456
+
 ## Installation
 
 1. Clone the repository to your local machine:
